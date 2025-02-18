@@ -1,3 +1,5 @@
+check db is already exists
+   select * from sys.databases where name='Datawarehouse'
 Create DB in SQL:
   create Database Datawarehouse;
 go
