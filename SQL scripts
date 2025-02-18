@@ -1,0 +1,8 @@
+Create DB in SQL:
+  create Database Datawarehouse;
+go
+ create schema gold;
+go
+ create schema silver;
+go
+create schema bronze;
