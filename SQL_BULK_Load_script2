@@ -1,0 +1,21 @@
+============================================================================
+We are going to use bulk data  load in mssql to load the  data from CSV file
+============================================================================
+
+Table1:
+
+bulk insert [bronze].[crm_cust_info]
+FROM 'C:\Users\hkarthikeyan1\Desktop\Harini\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
+with
+(firstrow=2,
+fieldterminator=',',
+tablock);
+
+Table2:
+
+bulk insert [bronze].[crm_prd_info]
+FROM 'C:\Users\hkarthikeyan1\Desktop\Harini\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\prd_info.csv'
+with
+(firstrow=2,
+fieldterminator=',',
+tablock);
