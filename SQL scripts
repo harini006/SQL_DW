@@ -18,11 +18,11 @@ CREATE SOURCE TABLE  from Source in SQL
 Source tables are cust_info.csv,prd_info.csv,sales_details.csv
 ========================================================================
 =========================================
-Step1: Generate DDL statements for 6 source tables)
+Step1: Generate DDL statements for 6 source tables in the bronze schema
 ===================================================
 Table1: 
 
-create table cust_info(
+create table bronze.crm_cust_info(
 cst_id int,
 	cst_key	varchar(34),
 	cst_firstname varchar(34),
@@ -33,7 +33,7 @@ cst_id int,
 	)
 
 Table2:
-create table prd_info(
+create table bronze.crm_prd_info(
 prd_id int,
 	prd_key	varchar(34),
 	prd_nm varchar(48),
@@ -44,7 +44,7 @@ prd_id int,
 	)
 
 Table 3:
-create table sales_details(
+create table bronze.crm_sales_details(
 sls_ord_num int,
 	sls_prd_key	varchar(34),
 	sls_cust_id int,
@@ -57,14 +57,14 @@ sls_ord_num int,
 	)
 
 Table 4 :
-create table CUST_AZ12
+create table bronze.erp_CUST_AZ12
 (cid varchar(679),
 bdate date,
 gen varchar(76)
 )
 
 Table 5 :
-create table LOC_A101
+create table bronze.erp_LOC_A101
 (cid varchar(679),
 cntry varchar(789),
 gen varchar(76)
@@ -72,7 +72,7 @@ gen varchar(76)
 
 
 Table 6:
-create table PX_CAT_G1V2
+create table bronze.erp_PX_CAT_G1V2
 (id  varchar(679),
 cat varchar(789),
 subcat varchar(76),
