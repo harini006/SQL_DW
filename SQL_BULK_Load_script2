@@ -1,5 +1,5 @@
 ============================================================================
-We are going to use bulk data  load in mssql to load the  data from CSV file
+Step 1:  We are going to use bulk data  load in mssql to load the  data from CSV file
 ============================================================================
 
 Table1:
@@ -54,7 +54,7 @@ tablock);
 
 
 ================================================================
-Added the Print and truncate statement. Print is for clear guidance and visibility. 
+Step 2: Added the Print and truncate statement. Print is for clear guidance and visibility. 
 Truncate is for you need clean before loading
 ===============================================================
 
@@ -121,5 +121,9 @@ with (
 firstrow=2,
 fieldterminator =',',
 tablock)
+
+=======================================================
+Step 3:
+===========================================================
 
 
