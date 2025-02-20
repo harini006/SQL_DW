@@ -54,7 +54,8 @@ tablock);
 
 
 ================================================================
-Added the Print and truncate statement
+Added the Print and truncate statement. Print is for clear guidance and visibility. 
+Truncate is for you need clean before loading
 ===============================================================
 
 PRINT '================================================';
