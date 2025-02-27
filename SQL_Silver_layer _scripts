@@ -112,5 +112,7 @@ SELECT
 				ELSE sls_price  -- Derive price if original value is invalid
 			END AS sls_price
 		FROM bronze.crm_sales_details;
-==============================================================================
+===============================================================================================
+Table 4:
+
 
