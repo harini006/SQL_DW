@@ -133,4 +133,39 @@ case when bdate>GETDATE() then null
   FROM [datawarehouse].[bronze].[erp_cust_az_12]
 
 =============================================================================================
+Table 5--> [silver].[erp_LOC_A101]
+============================================================================================
+
+iNSERT INTO 
+[silver].[erp_LOC_A101]
+(CID, CNTRY)
+
+
+SELECT
+			REPLACE(cid, '-', '') AS cid, 
+			CASE
+				WHEN TRIM(cntry) = 'DE' THEN 'Germany'
+				WHEN TRIM(cntry) IN ('US', 'USA') THEN 'United States'
+				WHEN TRIM(cntry) = '' OR cntry IS NULL THEN 'n/a'
+				ELSE TRIM(cntry)
+			END AS cntry -- Normalize and Handle missing or blank country codes
+		FROM bronze.erp_loc_a101;
+===========================================================================================
+
+Table 6 -->silver.erp_px_cat_g1v2
+==========================================================================================
+INSERT INTO silver.erp_px_cat_g1v2 (
+			id,
+			cat,
+			subcat,
+			maintenance
+		)
+		SELECT
+			id,
+			cat,
+			subcat,
+			maintenance
+		FROM bronze.erp_px_cat_g1v2;
+================================================================================================
+
 
