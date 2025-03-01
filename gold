@@ -1,0 +1,18 @@
+select 
+ROW_NUMBER() over(order by cst_id)  as custoemr_key,
+cid.cst_id customer_id,
+cid.cst_key customer_key,
+cid.cst_firstname customer_firstname,
+cid.cst_lastname customer_lastname,
+cid.cst_marital_status customer_marital_status,
+CASE 
+        WHEN cid.cst_gndr != 'n/a' THEN cid.cst_gndr -- CRM is the primary source for gender
+        ELSE COALESCE(cus.gen, 'n/a')  			   -- Fallback to ERP data
+    END    gender,
+cid.cst_create_date customer_create_date
+
+from [silver].[crm_cust_info] cid
+left join [silver].[erp_customer] cus 
+on cid.cst_key= cus.cid
+left join [silver].[erp_loc_a101] erp
+on cus.cid= erp.cid
