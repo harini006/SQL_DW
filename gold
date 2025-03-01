@@ -1,3 +1,5 @@
+create view gold.dim_customer as 
+
 select 
 ROW_NUMBER() over(order by cst_id)  as custoemr_key,
 cid.cst_id customer_id,
