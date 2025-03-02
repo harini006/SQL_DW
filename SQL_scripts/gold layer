@@ -1,1 +1,40 @@
 
+-------------------------------------------------------------------
+Creating Dimension table 
+1. Dimension Customer table
+2. Dimensio Product table
+=================================================================
+1. Dimension Customer table
+------------------------------------------------------
+SELECT ROW_NUMBER() OVER (ORDER BY cst_id) AS custoemr_key, 
+cid.cst_id customer_id, 
+cid.cst_key customer_key, 
+cid.cst_firstname customer_firstname,
+cid.cst_lastname customer_lastname,
+cid.cst_marital_status customer_marital_status, 
+CASE WHEN cid.cst_gndr != 'n/a' THEN cid.cst_gndr /* CRM is the primary source for gender*/ ELSE COALESCE (cus.gen, 'n/a') /* Fallback to ERP data*/ END gender, cid.cst_create_date customer_create_date
+FROM   [silver].[crm_cust_info] cid LEFT JOIN
+             [silver].[erp_customer] cus ON cid.cst_key = cus.cid LEFT JOIN
+             [silver].[erp_loc_a101] erp ON cus.cid = erp.cid
+
+====================================================================
+/****** Script for SelectTopNRows command from SSMS  ******/
+create view gold.dim_products 
+as
+SELECT prod.[prd_id]
+      ,prod.[cat_id]
+      ,prod.[prd_key]
+      ,prod.[prd_nm]
+      ,prod.[prd_cost]
+      ,prod.[prd_line]
+      ,prod.[prd_start_dt]
+      ,prod.[prd_end_dt]
+      ,prod.[dwh_create_date],
+	 cat.maintenance,
+	 cat.subcat
+	  
+  FROM [datawarehouse].[silver].[crm_prd_info] prod
+  LEFT JOIN [silver].[erp_px_cat_g1v2] cat
+  on prod.cat_id = cat.id
+  where prd_end_dt is null
+------------------------------------------------------------------------------------
