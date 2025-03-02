@@ -23,25 +23,22 @@ The project follows the Medallion Architecture:
 
 
 🔧 Building the Data Warehouse (Data Engineering)
-Objective
+**Objective**
 Develop a modern data warehouse using SQL Server to consolidate sales data for analytical reporting and decision-making.
 
-Specifications
-
-Data Sources: ERP and CRM data (CSV files).
-Data Quality: Cleansing, standardization, and issue resolution.
-Integration: Merging data from multiple sources into a structured analytical model.
-Scope: Focus on latest datasets only (no historization).
-Documentation: Providing a well-documented data model for business and analytics teams.
-SQL-Based Analytics (Data Analysis)
+**Specifications**
+1. Data Sources: ERP and CRM data (CSV files).
+2. Data Quality: Cleansing, standardization, and issue resolution.
+3. Integration: Merging data from multiple sources into a structured analytical model.
+4. Scope: Focus on the latest datasets only (no historization).
+5. Documentation: Providing a well-documented data model for business and analytics teams.
+6.SQL-Based Analytics (Data Analysis)
 Developing SQL-based queries to generate insights into:
 📊 Customer Behavior
 📊 Product Performance
 📊 Sales Trends
 
 These insights enable stakeholders to make data-driven business decisions.
-
-For more details, refer to docs/requirements.md.
 
 📂 Repository Structure
 
@@ -61,18 +58,20 @@ data-warehouse-project/
 🔹 SQL Server – Data storage, transformation, and analytics
 🔹 Git & GitHub – Version control
 
-🌟 About Me
-Hi there! 👋 I'm Harini Karthikeyan, an IT professional passionate about data engineering. I love working with data, designing scalable solutions, and sharing my knowledge to make data projects more efficient and impactful.
-
-📌 Let's connect!
-📧 Email:harinikarthikeyan006@gmail.com
-🔗 LinkedIn: https://www.linkedin.com/in/harini-k-04a847200/
-
-📌 How to Use This Repository?
+📌 **How to Use This Repository?**
 1️⃣ Clone the repository:
 2️⃣ Run ETL scripts using SQL Server
 3️⃣ Analyze and visualize data using SQL queries or BI tools
 
-📜 License
+📜 **License**
 This project is open-source and available.
+
+
+🌟 **About Me**
+Hi there! 👋 I'm **Harini Karthikeyan**, an IT professional passionate about data engineering. I love working with data, designing scalable solutions, and sharing my knowledge to make data projects more efficient and impactful.
+
+📌**Let's connect!**
+📧 Email:harinikarthikeyan006@gmail.com
+🔗 LinkedIn: https://www.linkedin.com/in/harini-k-04a847200/
+
 
