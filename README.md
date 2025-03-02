@@ -20,8 +20,6 @@ The project follows the Medallion Architecture:
 2️⃣ Silver Layer → Cleanses, standardizes, and normalizes data for consistency.
 3️⃣ Gold Layer → Houses business-ready data modeled into a star schema for reporting and analytics.
 
-
-
 🔧 Building the Data Warehouse (Data Engineering)
 **Objective**
 Develop a modern data warehouse using SQL Server to consolidate sales data for analytical reporting and decision-making.
