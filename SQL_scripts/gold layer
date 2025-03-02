@@ -19,6 +19,8 @@ FROM   [silver].[crm_cust_info] cid LEFT JOIN
 
 ====================================================================
 /****** Script for SelectTopNRows command from SSMS  ******/
+2. Dimension Product Table 
+=====================================================================
 create view gold.dim_products 
 as
 SELECT prod.[prd_id]
