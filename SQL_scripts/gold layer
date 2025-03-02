@@ -37,4 +37,32 @@ SELECT prod.[prd_id]
   LEFT JOIN [silver].[erp_px_cat_g1v2] cat
   on prod.cat_id = cat.id
   where prd_end_dt is null
+======================================================================================
+This query have duplication, so changed the query to remove the duplicated value:
+======================================================================================
+create or alter view [gold].[dim_products]
+as
+
+WITH RankedProducts AS (
+    SELECT
+       row_number() OVER (PARTITION BY prod.prd_id ORDER BY prod.dwh_create_date DESC) AS product_key,
+        prod.[prd_id] product_id,
+        prod.[cat_id] ,
+        prod.[prd_key] product_number,
+        prod.[prd_nm] product_name,
+        prod.[prd_cost] cost,
+        prod.[prd_line] product_line,
+        prod.[prd_start_dt] start_date,
+        prod.[prd_end_dt] end_date,
+        prod.[dwh_create_date] create_Date,
+        cat.maintenance,
+        cat.subcat subcategory
+    FROM [datawarehouse].[silver].[crm_prd_info] prod
+    LEFT JOIN [silver].[erp_px_cat_g1v2] cat
+        ON prod.cat_id = cat.id
+)
+SELECT *
+FROM RankedProducts
+WHERE product_key = 1;
+
 ------------------------------------------------------------------------------------
