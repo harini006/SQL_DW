@@ -1,6 +1,16 @@
-================================
-Create DB and schemas  in mssql
-=================================
+===================================================================================================================
+This is the extraction layer, we are going to call this layer as Bronze. In this Extarction layer, we are going to 
+extract the data from source (excel file).
+=================================================================================================================
+--------------------------------------------------------------------------------------------------------------
+ DESCRIPTION:Create DB and schemas  in mssql. The schema should be depend on the Table that exists on the Excel sheet.
+Note: In general the source file would be different. We are going to use Excel file for this Project.
+--------------------------------------------------------------------------------------------------------------
+
+=======================
+Step 1: Create Database
+========================
+
 check db is already exists
    select * from sys.databases where name='Datawarehouse'
 Create DB in SQL:
@@ -14,12 +24,13 @@ create schema bronze;
 
 
 ========================================================================
+Step 2: Generate DDL statements for 6 source tables in the bronze schema
+=======================================================================
+
+========================================================================
 CREATE SOURCE TABLE  from Source in SQL
 Source tables are cust_info.csv,prd_info.csv,sales_details.csv
 ========================================================================
-=========================================
-Step1: Generate DDL statements for 6 source tables in the bronze schema
-===================================================
 Table1: 
 
 create table bronze.crm_cust_info(
@@ -56,6 +67,11 @@ sls_ord_num int,
 	sls_price varchar(87)
 	)
 
+========================================================================
+CREATE SOURCE TABLE  from Source in SQL
+Source tables are from erp CUST_AZ12, LOC_A101, PX_CAT_G1V2
+========================================================================
+
 Table 4 :
 create table bronze.erp_CUST_AZ12
 (cid varchar(679),
@@ -79,11 +95,10 @@ subcat varchar(76),
 MAINTENANCE varchar(54)
 )
 	
-==================================================================================
 
-============================================================================
-Step 1:  We are going to use bulk data  load in mssql to load the  data from CSV file
-============================================================================
+====================================================================================
+Step 3:  We are going to use bulk data  load in mssql to load the  data from CSV file
+====================================================================================
 CREATE OR ALTER PROCEDURE bronze.load_bronze 
 AS
 BEGIN
@@ -108,9 +123,9 @@ BEGIN
         BULK INSERT [bronze].[crm_cust_info]
         FROM 'C:\Users\hkarthikeyan1\Desktop\Harini\sql-data-warehouse-project\sql-data-warehouse-project\datasets\source_crm\cust_info.csv'
         WITH (
-            FIRSTROW = 2,
+            FIRSTROW = 2, # it indicates the start of the record
             FIELDTERMINATOR = ',',
-            TABLOCK
+            TABLOCK  # speed up the process
         );
 
         SET @end_time = GETDATE();
@@ -272,6 +287,7 @@ Loading ERP Tables
 Completion time: 2025-02-21T08:59:17.7089288+05:30
 ----------------------------------------------------------------------------------
 	
+The data are inserted into Extraction layer of Source file.
 
 
 	
