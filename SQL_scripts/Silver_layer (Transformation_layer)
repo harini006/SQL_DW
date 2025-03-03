@@ -1,8 +1,14 @@
 ===================================================================================================
-cleaning the data, removing the space, replcing the correct values, removed the duplicate values ==
-================================================================================================ ==
+DESCRIPTION: This is the Transform layer which is also called as cleaning layer. This is going to 
+clean the data,removing the unwanted space, replacing the correct values, removed the duplicate 
+values, give the meanigful names etc..., 
+==================================================================================================
+
+-----------------------------------------------------------------------------------------
 Table1:crm_cust_info
-------------------------
+Here, we are going to truncate the value,give the meaningful names, removed the duplicate 
+values by placing the rownumber function.
+------------------------------------------------------------------------------------------
 Insert into 
 [silver].[crm_cust_info]
 (cst_id, 
@@ -41,9 +47,11 @@ SELECT
 		WHERE flag_last = 1and flag_last_1=1;
 
 
-
-Table 2:
--------------------------
+-------------------------------------------------------------------------------------------
+Table 2:silver.crm_prd_info, Here we are going to seprate the values to extract and compare 
+the values for other tables and changing the value to date format, because the product end date are 
+null.
+--------------------------------------------------------------------------------------------
 
 INSERT INTO silver.crm_prd_info (
 			prd_id,
@@ -70,12 +78,13 @@ INSERT INTO silver.crm_prd_info (
 			END AS prd_line, -- Map product line codes to descriptive values
 			CAST(prd_start_dt AS DATE) AS prd_start_dt,
 			CAST(
-				LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt) - 1 
+				LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)  
 				AS DATE
 			) AS prd_end_dt -- Calculate end date as one day before the next start date
 		FROM bronze.crm_prd_info;
 ------------------------------------------------------------------------------
 Table 3:crm_sales_details
+changing the date value and recalculating the value
 -----------------------------------------------------------------------
 insert into [silver].[crm_sales_details]
 ([sls_ord_num],
@@ -114,6 +123,7 @@ SELECT
 		FROM bronze.crm_sales_details;
 ===============================================================================================
 Table 4:[silver].[erp_cust_az12]
+checking the data consistency and removing the incorrect data.
 ================================================================================================
 /****** Script for SelectTopNRows command from SSMS  ******/
 insert into 
@@ -134,6 +144,7 @@ case when bdate>GETDATE() then null
 
 =============================================================================================
 Table 5--> [silver].[erp_LOC_A101]
+Remove the - symbol in order to match other columns
 ============================================================================================
 
 iNSERT INTO 
@@ -153,6 +164,7 @@ SELECT
 ===========================================================================================
 
 Table 6 -->silver.erp_px_cat_g1v2
+No changes needed 
 ==========================================================================================
 INSERT INTO silver.erp_px_cat_g1v2 (
 			id,
