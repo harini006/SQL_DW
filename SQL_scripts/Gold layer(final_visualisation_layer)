@@ -1,10 +1,14 @@
+-----------------------------------------------------------------------
+Gold layer--- Final layer that we are going to give our business user.
+------------------------------------------------------------------------
 
--------------------------------------------------------------------
+================================================================
+Step 1:
 Creating Dimension table 
-1. Dimension Customer table
-2. Dimensio Product table
+1.  Customer table
+2.  Product table
 =================================================================
-1. Dimension Customer table
+1.  Customer table
 ------------------------------------------------------
 SELECT ROW_NUMBER() OVER (ORDER BY cst_id) AS custoemr_key, 
 cid.cst_id customer_id, 
@@ -19,7 +23,7 @@ FROM   [silver].[crm_cust_info] cid LEFT JOIN
 
 ====================================================================
 /****** Script for SelectTopNRows command from SSMS  ******/
-2. Dimension Product Table 
+2.  Product Table 
 =====================================================================
 create view gold.dim_products 
 as
@@ -68,3 +72,4 @@ FROM RankedProducts
 WHERE product_key = 1;
 
 ------------------------------------------------------------------------------------
+User can easily see the customer and sales data 
