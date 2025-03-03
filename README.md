@@ -64,6 +64,8 @@ data-warehouse-project/
 📜 **License**
 This project is open-source and available.
 
+📜 **Note**
+This was the sample data and similar project that I have worked in past.
 
 🌟 **About Me**
 Hi there! 👋 I'm **Harini Karthikeyan**, an IT professional passionate about data engineering. I love working with data, designing scalable solutions, and sharing my knowledge to make data projects more efficient and impactful.
