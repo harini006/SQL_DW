@@ -287,7 +287,9 @@ Loading ERP Tables
 Completion time: 2025-02-21T08:59:17.7089288+05:30
 ----------------------------------------------------------------------------------
 	
-The data are inserted into Extraction layer of Source file.
+The data are inserted into SQL from  Source file.
+
+
 
 
 	
