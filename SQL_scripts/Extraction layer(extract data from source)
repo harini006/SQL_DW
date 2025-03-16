@@ -12,9 +12,9 @@ Step 1: Create Database
 ========================
 
 check db is already exists
-   select * from sys.databases where name='Datawarehouse'
+ >  select * from sys.databases where name='Datawarehouse'
 Create DB in SQL:
-  create Database Datawarehouse;
+  >create Database Datawarehouse;
 go
  create schema gold;
 go
@@ -22,6 +22,7 @@ go
 go
 create schema bronze;
 
+Go is the breakage of one line to other
 
 ========================================================================
 Step 2: Generate DDL statements for 6 source tables in the bronze schema
